@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:getwidget/getwidget.dart';
+import 'users.dart';
+import 'images_data.dart';
 
 void main() {
   runApp(MyApp());
@@ -41,63 +42,6 @@ class _MyHomePageState extends State<MyHomePage> {
     'Black',
     'Bold'
   ];
-  final images = [
-    'Rectangle 6',
-    'Rectangle 7',
-    'Rectangle 9',
-    'Rectangle 8',
-    'Rectangle 11',
-    'Rectangle 10',
-    'Rectangle 12',
-    'Rectangle 14',
-    'Rectangle 13',
-  ];
-
-  add_frend(image, name, job) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Image(
-                    image: AssetImage('assets/$image.png'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('$name'),
-                        Text('$job'),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Icon(
-                  Icons.close,
-                  color: Colors.red,
-                ),
-              ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 48),
-          child: Divider(
-            color: Colors.grey[350],
-            thickness: 1.8,
-          ),
-        )
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
         ),
         actions: [
           IconButton(
@@ -145,12 +89,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(height: 25),
                 Text(
                   'Tiana Rosser',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 SizedBox(height: 2),
                 Text(
                   'Developer',
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
                 SizedBox(height: 10),
                 Divider(
@@ -162,7 +106,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Text(
                       'Select type',
-                      style: TextStyle(fontSize: 16),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -177,13 +122,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         children: [
                           for (var label in labels)
                             Chip(
-                              label: Text('$label'),
+                              label: Text(
+                                '$label',
+                                style: TextStyle(color: Colors.grey),
+                              ),
                               backgroundColor: Colors.grey[200],
                             ),
                         ],
                       ),
                     ),
-                    SizedBox(height: 6),
+                    SizedBox(height: 8),
                     Divider(
                       color: Colors.grey[350],
                       thickness: 1.8,
@@ -193,7 +141,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         Text(
                           'Friends',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
@@ -201,8 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 18,
                     ),
 
-                    ////////////////////
-
+                    ///Adding users, we tske data from the method add_frend().
                     add_frend('image21', 'Corey George', 'Developer'),
                     add_frend('Image1', 'Ahmad  Vetrovs', 'Developer'),
                     add_frend('image3', 'Cristofer Workman', 'Developer'),
@@ -218,7 +166,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               OutlineButton.icon(
-                                  label: Text('ADD FREND'),
+                                  label: Text(
+                                    'ADD FREND',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w500),
+                                  ),
                                   icon: Icon(Icons.add),
                                   onPressed: () {}),
                             ],
@@ -242,45 +194,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         SizedBox(height: 10),
                         //
-                        // Images
+                        /// Adding photos, we take data from the method add_images().
                         //
-                        SizedBox(
-                          height: 345,
-                          child: GridView.count(
-                            padding: EdgeInsets.zero,
-                            crossAxisCount: 3,
-                            childAspectRatio: 1,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            physics: NeverScrollableScrollPhysics(),
-                            children: [
-                              for (var image in images)
-                                GFAvatar(
-                                  shape: GFAvatarShape.standard,
-                                  backgroundImage:
-                                      AssetImage('assets/$image.jpg'),
-                                  child: Align(
-                                    alignment: Alignment.topRight,
-                                    child: CircleAvatar(
-                                      backgroundColor: Colors.white,
-                                      radius: 17.0,
-                                      child: CircleAvatar(
-                                        backgroundColor: Colors.red,
-                                        radius: 16.0,
-                                        child: Icon(
-                                          Icons.close,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                            ],
-                          ),
-                        ),
-                        //
-                        // Bottom buttons
-                        //
+                        add_images(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -291,6 +207,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   onPressed: () {},
                                   child: Text(
                                     'DELETE',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w600),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                       primary: Color.fromRGBO(109, 92, 238, 1)),
@@ -307,6 +225,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Text(
                                     'ADD',
                                     style: TextStyle(
+                                        fontWeight: FontWeight.w700,
                                         color: Color.fromRGBO(109, 92, 238, 1)),
                                   ),
                                 ),
