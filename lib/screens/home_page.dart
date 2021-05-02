@@ -1,6 +1,13 @@
-import 'users.dart';
-import 'images_data.dart';
+import 'package:flutter/services.dart';
+import 'package:task_3_flutter/components/chips.dart';
+
+import '../components/users.dart';
+import '../components/images_data.dart';
 import 'package:flutter/material.dart';
+import '../task3_theme.dart';
+import '../components/avatar.dart';
+import '../components/divider.dart';
+import '../components/chips.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({this.image, this.title, this.name, this.job});
@@ -13,16 +20,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final labels = [
-    'Black',
-    'Bold',
-    'Medium',
-    'Regular',
-    'Light',
-    'Black',
-    'Bold'
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,17 +27,22 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: IconButton(
           icon: Icon(
             Icons.keyboard_backspace_rounded,
-            color: Colors.black,
+            color: Black,
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: White,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+          // hedline 3
+          style: Task3Theme.textTheme.headline3,
         ),
         actions: [
           IconButton(
-              icon: Icon(Icons.menu, color: Colors.black), onPressed: () {})
+              icon: Icon(
+                Icons.menu,
+                color: Black,
+              ),
+              onPressed: () {})
         ],
       ),
       body: Padding(
@@ -50,44 +52,20 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 25),
             Column(
               children: <Widget>[
-                CircleAvatar(
-                  radius: 60.0,
-                  backgroundImage: AssetImage('assets/avatar.jpg'),
-                  backgroundColor: Colors.transparent,
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 20.0,
-                      child: CircleAvatar(
-                        radius: 18.0,
-                        child: Icon(Icons.add),
-                      ),
-                    ),
-                  ),
-                ),
+                AddAvatar(),
                 SizedBox(height: 25),
-                Text(
-                  'Tiana Rosser',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
+                // hedline 4
+                Text('Tiana Rosser', style: Task3Theme.textTheme.headline4),
                 SizedBox(height: 2),
-                Text(
-                  'Developer',
-                  style: TextStyle(fontSize: 12, color: Colors.grey),
-                ),
-                SizedBox(height: 10),
-                Divider(
-                  color: Colors.grey[350],
-                  thickness: 1.8,
-                ),
-                SizedBox(height: 6),
+                //hedline 5
+                Text('Developer', style: Task3Theme.textTheme.headline5),
+                addDivider(),
                 Row(
                   children: [
+                    //hedline 6
                     Text(
                       'Select type',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      style: Task3Theme.textTheme.headline6,
                     ),
                   ],
                 ),
@@ -95,34 +73,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 30,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          for (var label in labels)
-                            Chip(
-                              label: Text(
-                                '$label',
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                              backgroundColor: Colors.grey[200],
-                            ),
-                        ],
-                      ),
-                    ),
+                    AddChip(),
                     SizedBox(height: 8),
-                    Divider(
-                      color: Colors.grey[350],
-                      thickness: 1.8,
-                    ),
+                    addDivider(),
                     SizedBox(height: 10),
                     Row(
                       children: [
+                        // hedline6
                         Text(
                           'Friends',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
+                          style: Task3Theme.textTheme.headline6,
                         ),
                       ],
                     ),
@@ -130,11 +90,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 18,
                     ),
 
-                    ///Adding users, we tske data from the method add_frend().
-                    add_frend('image21', 'Corey George', 'Developer'),
-                    add_frend('Image1', 'Ahmad  Vetrovs', 'Developer'),
-                    add_frend('image3', 'Cristofer Workman', 'Developer'),
-                    add_frend('image4', 'Tiana Korsgaard', 'Developer'),
+                    ///Adding users, we take data from the method add_frend().
+                    addFrend('image21', 'Corey George', 'Developer'),
+                    addFrend('Image1', 'Ahmad  Vetrovs', 'Developer'),
+                    addFrend('image3', 'Cristofer Workman', 'Developer'),
+                    addFrend('image4', 'Tiana Korsgaard', 'Developer'),
                     SizedBox(
                       height: 5,
                     ),
@@ -146,20 +106,17 @@ class _MyHomePageState extends State<MyHomePage> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               OutlineButton.icon(
-                                  label: Text(
-                                    'ADD FREND',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w500),
-                                  ),
-                                  icon: Icon(Icons.add),
-                                  onPressed: () {}),
+                                label: Text(
+                                  'ADD FREND',
+                                  style: Task3Theme.textTheme.button,
+                                ),
+                                icon: Icon(Icons.add),
+                                onPressed: () {},
+                              ),
                             ],
                           ),
                         ),
-                        Divider(
-                          color: Colors.grey[350],
-                          thickness: 1.8,
-                        ),
+                        addDivider(),
                         Padding(
                           padding: const EdgeInsets.only(top: 5),
                           child: Container(
@@ -172,11 +129,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 13),
                         //
                         /// Adding photos, we take data from the method add_images().
                         //
-                        add_images(),
+                        AddImage(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -187,11 +144,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                   onPressed: () {},
                                   child: Text(
                                     'DELETE',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w600),
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600),
                                   ),
                                   style: ElevatedButton.styleFrom(
-                                      primary: Color.fromRGBO(109, 92, 238, 1)),
+                                      primary: Violet500),
                                 ),
                               ),
                             ),
@@ -200,13 +158,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 padding: const EdgeInsets.only(left: 7),
                                 child: ElevatedButton(
                                   onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                      primary: Colors.white),
+                                  style:
+                                      ElevatedButton.styleFrom(primary: White),
                                   child: Text(
                                     'ADD',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        color: Color.fromRGBO(109, 92, 238, 1)),
+                                    style: Task3Theme.textTheme.overline,
                                   ),
                                 ),
                               ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:task_3_flutter/components/divider.dart';
+import 'package:task_3_flutter/task3_theme.dart';
+import 'divider.dart';
 
-add_frend(image, name, job) {
+addFrend(image, name, job) {
   return Column(
     children: [
       Row(
@@ -16,14 +19,16 @@ add_frend(image, name, job) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      //body1
                       Text(
                         '$name',
-                        style: TextStyle(fontWeight: FontWeight.w400),
+                        style: Task3Theme.textTheme.bodyText1,
                       ),
                       SizedBox(height: 5),
+                      //body2
                       Text(
                         '$job',
-                        style: TextStyle(color: Colors.grey),
+                        style: Task3Theme.textTheme.bodyText2,
                       ),
                     ],
                   ),
@@ -32,22 +37,18 @@ add_frend(image, name, job) {
             ),
           ),
           Container(
-            child: Align(
+            child: IconButton(
               alignment: Alignment.topRight,
-              child: Icon(
-                Icons.close,
-                color: Colors.red,
-              ),
+              onPressed: () {},
+              icon: Icon(Icons.close),
+              color: Red700,
             ),
           ),
         ],
       ),
       Padding(
         padding: const EdgeInsets.only(left: 48, bottom: 4),
-        child: Divider(
-          color: Colors.grey[350],
-          thickness: 1.8,
-        ),
+        child: addDivider(),
       )
     ],
   );
