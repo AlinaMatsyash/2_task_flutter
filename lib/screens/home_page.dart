@@ -33,16 +33,16 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: White,
         title: Text(
           widget.title,
-          // hedline 3
           style: Task3Theme.textTheme.headline3,
         ),
         actions: [
           IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Black,
-              ),
-              onPressed: () {})
+            icon: Icon(
+              Icons.menu,
+              color: Black,
+            ),
+            onPressed: () {},
+          ),
         ],
       ),
       body: Padding(
@@ -54,15 +54,18 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 AddAvatar(),
                 SizedBox(height: 25),
-                // hedline 4
-                Text('Tiana Rosser', style: Task3Theme.textTheme.headline4),
+                Text(
+                  'Tiana Rosser',
+                  style: Task3Theme.textTheme.headline4,
+                ),
                 SizedBox(height: 2),
-                //hedline 5
-                Text('Developer', style: Task3Theme.textTheme.headline5),
+                Text(
+                  'Developer',
+                  style: Task3Theme.textTheme.headline5,
+                ),
                 addDivider(),
                 Row(
                   children: [
-                    //hedline 6
                     Text(
                       'Select type',
                       style: Task3Theme.textTheme.headline6,
@@ -79,7 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(height: 10),
                     Row(
                       children: [
-                        // hedline6
                         Text(
                           'Friends',
                           style: Task3Theme.textTheme.headline6,
@@ -149,7 +151,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontWeight: FontWeight.w600),
                                   ),
                                   style: ElevatedButton.styleFrom(
-                                      primary: Violet500),
+                                    primary: Violet500,
+                                  ),
                                 ),
                               ),
                             ),

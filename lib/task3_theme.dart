@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 class Task3Theme {
   static TextTheme textTheme = TextTheme(
     headline3: GoogleFonts.openSans(
-      fontWeight: FontWeight.w500,
-      fontSize: 22,
+      fontWeight: FontWeight.w600,
+      fontSize: 21,
       color: Black,
     ),
     headline4: GoogleFonts.openSans(
