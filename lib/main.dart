@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Profile',
       home: MyHomePage(
-        title: 'Profile',
+        title: 'Profiler',
       ),
     );
   }
